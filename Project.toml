@@ -1,9 +1,13 @@
 name = "SpectralResampling"
 uuid = "01da207a-183e-480e-93ab-a94ea6491b8c"
 authors = ["Michael Reefe"]
-version = "1.0.0-DEV"
+version = "1.0.0"
+
+[deps]
+LoopVectorization = "bdcacae8-1622-11e9-2a5c-532679323890"
 
 [compat]
+LoopVectorization = "0.12"
 julia = "1"
 
 [extras]
