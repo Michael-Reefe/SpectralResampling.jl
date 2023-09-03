@@ -64,6 +64,12 @@ resample_conserving_flux(new_wave, old_wave, flux[, err, mask]; fill=NaN, verbos
 - `new_mask::BitArray`: Only returned if an input `mask` is provided. These are the new mask values that have been resampled
     onto the output wavelength grid. Will be the same size as `new_fluxes`.
 
+A few other utility functions are provided that were not present in the original Python version. Namely, `get_logarithmic_λ` and 
+`get_linear_λ`, which convert between linearly-spaced and logarithmically-spaced wavelength vectors. They each take as input a wavelength
+vector (for `get_logarithmic_λ` the input must be linear and for `get_linear_λ` the input must be logarithmic), and an optional second
+argument specifying the spacing of the new vector in log space or linear space. If no spacing is provided, the output vector is spaced
+such that it has the same number of samples as the input vector.
+
 ## Differences from the python package
 
 There are a few key differences worth mentioning:
@@ -77,6 +83,7 @@ There are a few key differences worth mentioning:
   combined into the new bin in the output flux array. That is to say, if any of the points used from the orignal flux
   array to calculate the rebinned flux were masked out, then the new flux value will also be masked out. The mask is NOT used 
   during the calculation of the output fluxes or errors.
+- The `get_logarithmic_λ` and `get_linear_λ` functions are new (see above).
 - Due to Julia's JIT compiler and optimizations using LoopVectorization.jl, this package is must faster than the original Python version,
   and even beats the numba-jitted Python version as well (after compilation). For very large 70000x40x40 flux and error arrays, during my testing,
   the Julia version completed in ~10s while the numba veresion took ~12s.  For smaller 70000x10x10 arrays, the julia version took ~0.07s versus
