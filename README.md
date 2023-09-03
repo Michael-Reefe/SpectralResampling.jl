@@ -5,8 +5,8 @@
 ## Introduction
 
 This Julia package allows one to resample fluxes and errors onto a new arbitrary wavelength grid while conserving the total flux. It is based off
-of the Python package (SpectRes)[https://github.com/ACCarnall/SpectRes] by Adam Carnall and implements most of the same functionality, but with
-some minor differences (noted below). Please see (Carnall (2017))[https://ui.adsabs.harvard.edu/abs/2017arXiv170505165C/abstract] for more information
+of the Python package [SpectRes](https://github.com/ACCarnall/SpectRes) by Adam Carnall and implements most of the same functionality, but with
+some minor differences (noted below). Please see [Carnall (2017)](https://ui.adsabs.harvard.edu/abs/2017arXiv170505165C/abstract) for more information
 about the theory behind the spectral resampling procedure.
 
 ## Installation
@@ -26,7 +26,7 @@ julia> ]
 
 This package only has one dependency:
 
-- (LoopVectorization)[https://github.com/JuliaSIMD/LoopVectorization.jl]
+- [LoopVectorization](https://github.com/JuliaSIMD/LoopVectorization.jl)
 
 ## Usage
 
@@ -84,6 +84,6 @@ There are a few key differences worth mentioning:
 
 ## Citation
 
-If you use this code in your research, consider citing the original (Carnall (2017))[https://ui.adsabs.harvard.edu/abs/2017arXiv170505165C/abstract]
+If you use this code in your research, consider citing the original [Carnall (2017)](https://ui.adsabs.harvard.edu/abs/2017arXiv170505165C/abstract)
 paper.
 
