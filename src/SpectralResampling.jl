@@ -205,8 +205,9 @@ function _resample_conserving_flux_internal(new_wave::AbstractVector, old_wave::
         old_widths::AbstractVector, start::Integer, stop::Integer, j::Integer; quad::Bool=false)
         newflux_slice = selectdim(new_fluxes, 1, j)
         for ind ∈ CartesianIndices(newflux_slice)
-            num = 0.
-            denom = 0.
+            num_type = typeof(quad ? (new_fluxes[1]*old_widths[1])^2 : new_fluxes[1]*old_widths[1])
+            num = zero(num_type)
+            denom = zero(eltype(old_widths))
             f_slice = @view flux[:, ind]
             @turbo for k ∈ start:stop
                 q = old_widths[k] * f_slice[k]
@@ -215,7 +216,7 @@ function _resample_conserving_flux_internal(new_wave::AbstractVector, old_wave::
                 denom += old_widths[k]
             end
             num = quad ? √(num) : num
-            newflux_slice[ind] = num / denom
+            newflux_slice[ind] = num/denom
         end
     end
 
